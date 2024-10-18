@@ -56,33 +56,52 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Player\PlayerStates\SubStates\PlayerSwingState.cs" />
     <Compile Include="Assets\Scripts\LevelGenerator.cs" />
     <Compile Include="Assets\Scripts\Vehicle.cs" />
-    <Compile Include="Assets\Scripts\VehicleSpawner.cs" />
-    <Compile Include="Assets\Scripts\ObstacleSpawner.cs" />
-    <Compile Include="Assets\Scripts\ObjectPool.cs" />
-    <Compile Include="Assets\Scripts\Mover.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerFiniteState\Player.cs" />
-    <Compile Include="Assets\Scripts\TileDespawner.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerFiniteState\PlayerState.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerStates\SuperStates\PlayerGroundedState.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerFiniteState\PlayerStateMachine.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerStates\SubStates\PlayerStompState.cs" />
+    <Compile Include="Assets\Scripts\VehicleSpawner.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerStates\SuperStates\PlayerAbilityState.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerFiniteState\PlayerState.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerStates\SubStates\PlayerMoveState.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStates\SubStates\PlayerInAirState.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerStates\SubStates\PlayerSwingState.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerStates\SubStates\PlayerStompState.cs" />
+    <Compile Include="Assets\Scripts\ObstacleSpawner.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStates\SubStates\PlayerIdleState.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStates\SubStates\PlayerJumpState.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerStates\SuperStates\PlayerGroundedState.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerStates\SuperStates\PlayerAbilityState.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerStates\SubStates\PlayerMoveState.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerStates\SubStates\PlayerLandState.cs" />
+    <Compile Include="Assets\Scripts\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\Player\LockOnSystem.cs" />
+    <Compile Include="Assets\Scripts\Mover.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerFiniteState\Player.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerStates\SubStates\PlayerLandState.cs" />
+    <Compile Include="Assets\Scripts\TileDespawner.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabModelWindow.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserWindow.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabApi.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserManager.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabLogger.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabPlugin.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\Resizer.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabExporter.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporter.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabUI.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporterWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Asset Packs\PolygonPrototype\Shaders\Prototype_Glass_Global.shader" />
+    <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFFlipTexture.shader" />
+    <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFColorSpace.cginc" />
     <None Include="Assets\Asset Packs\PolygonPrototype\Shaders\Prototype_Object.shader" />
+    <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFPackOccMetalRough.shader" />
+    <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\Newtonsoft.Json.dll" />
     <None Include="Assets\Asset Packs\PolygonPrototype\Shaders\Prototype_Global.shader" />
     <None Include="Assets\README.txt" />
+    <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\SketchfabPlugin.dll" />
+    <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\Ionic.Zip.Unity.dll" />
     <None Include="Assets\Asset Packs\PolygonPrototype\Shaders\Prototype_Glass_Object.shader" />
+    <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFBumpToNormal.shader" />
+    <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\GLTFSerialization.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -336,6 +355,15 @@
     </Reference>
     <Reference Include="ReportGeneratorMerged">
       <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@1.2.2\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
+    </Reference>
+    <Reference Include="GLTFSerialization">
+      <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\GLTFSerialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip.Unity">
+      <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\Ionic.Zip.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="SketchfabPlugin">
+      <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\SketchfabPlugin.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.22f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>

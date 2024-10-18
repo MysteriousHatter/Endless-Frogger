@@ -92,7 +92,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2503945628412346609}
-  - component: {fileID: 2503945628412346610}
   - component: {fileID: 2503945628412346608}
   m_Layer: 0
   m_Name: ToadyFroggerson
@@ -119,20 +118,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &2503945628412346610
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2503945628412346614}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &2503945628412346608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +142,14 @@ MonoBehaviour:
   mover: {fileID: 0}
   variableJumpHeightMultiplier: 0.31
   coyoteTime: -3
+  releaseForceMagnitude: 10
   stompForce: 20
+  line: {fileID: 0}
+  swingForce: 4.5
+  swingDamper: 7
+  maxSwingDistance: 10
+  animationDuration: 3
+  playerToungeTransform: {fileID: 0}
 --- !u!1 &2503945628885573102
 GameObject:
   m_ObjectHideFlags: 0
