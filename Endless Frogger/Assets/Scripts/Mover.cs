@@ -65,4 +65,14 @@ public class Mover : MonoBehaviour
     {
         moveZ = value;
     }
+
+    public List<GameObject> GetMovabnleObjects()
+    {
+        return movableObjects;
+    }
+
+    public void clearMoveableObjects()
+    {
+        movableObjects.Clear();
+    }
 }

@@ -1,6 +1,7 @@
 ﻿// GameDev.tv Challenge Club. Got questions or want to share your nifty solution?
 // Head over to - http://community.gamedev.tv
 
+using Cinemachine;
 using JetBrains.Annotations;
 using System;
 using Unity.VisualScripting;
@@ -48,12 +49,17 @@ public class Player : MonoBehaviour
     [SerializeField] private float inputHoldTime = 0.2f;
 
     public Mover mover;
+    private LevelGenerator levelGenerator;
     public float variableJumpHeightMultiplier = 0.31f;
     public float coyoteTime = -3f;
     public float releaseForceMagnitude = 10f;
 
     public float stompForce = 20f;
     private bool isStomping = false;
+    [SerializeField] private LayerMask targetLayer;
+    [SerializeField] private float stompRadius = 8f;
+    [SerializeField] private GameObject particleEffectPrefab;
+
     public LineRenderer line;
 
 
@@ -78,6 +84,7 @@ public class Player : MonoBehaviour
     public bool lockedOn { get; private set; }
 
     private float jumpInputStartTime;
+    public GameObject checkPointPrefab { get; private set; }
 
     private void Awake()
     {
@@ -90,6 +97,8 @@ public class Player : MonoBehaviour
         LandState = new PlayerLandState(this, StateMachine);
         StompState = new PlayerStompState(this, StateMachine);
         SwingState = new PlayerSwingState(this, StateMachine);
+
+        levelGenerator = FindObjectOfType<LevelGenerator>();
     }
 
     private void Start()
@@ -146,9 +155,26 @@ public class Player : MonoBehaviour
     {
         if(isStomping && collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
+            Vector3 impactPoint = collision.contacts[0].point;
+            TriggerImpactEffects(impactPoint);
             DestroyObstructions();
             setIsStomping(false);
         }
+
+        if(collision.gameObject.tag.Equals("Coin"))
+        {
+            GameManager.instance.CoinCollectionIncrease(1);
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag(vehicleTag))
+        {
+            //levelGenerator.RespawnAtCheckpoint();
+        }
+        //if(collision.gameObject.CompareTag("Checkpoint"))
+        //{
+        //    Debug.Log("Get Checkpoint " + collision.gameObject.name);
+        //    levelGenerator.checkpointTile = collision.gameObject;
+        //}
     }
 
 
@@ -179,16 +205,32 @@ public class Player : MonoBehaviour
     void DestroyObstructions()
     {
         // Implement logic to destroy nearby obstructions
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2f);  // Detect nearby objects
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, stompRadius, targetLayer);  // Detect nearby objects
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.CompareTag(bonusVehcicleTag))
             {
-                Destroy(hitCollider.gameObject);
+                Vehicle vehicle = hitCollider.GetComponentInParent<Vehicle>();
+                vehicle.gameObject.SetActive(false); // Deactivates the vehicle
+                GameManager.instance.CoinCollectionIncrease(5);
                 Debug.Log("Obstruction destroyed!");
             }
         }
     }
+
+    void TriggerImpactEffects(Vector2 impactPoint)
+    {
+        // Instantiate particle effect at impactPoint
+        Instantiate(particleEffectPrefab, impactPoint, Quaternion.identity);
+
+        //// Play stomp sound
+        //AudioSource.PlayClipAtPoint(stompSound, impactPoint);
+
+        //// Add camera shake (Cinemachine example)
+        //CinemachineImpulseSource impulse = GetComponent<CinemachineImpulseSource>();
+        //impulse.GenerateImpulse();
+    }
+
     public void OnDestroyJoint()
     {
         SpringJoint joint = GetComponent<SpringJoint>();
@@ -219,6 +261,7 @@ public class Player : MonoBehaviour
     {
         return lockedOn;
     }
+
 
     // This method is called by Unity Editor to draw gizmos for visualization
     void OnDrawGizmos()

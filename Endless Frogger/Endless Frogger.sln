@@ -3,6 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{343322D0-CE41-6424-2630-7AD7415F808D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CFXRDemo", "CFXRDemo.csproj", "{829EA591-A29A-AD2D-1713-050E28FF36DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CFXRRuntime", "CFXRRuntime.csproj", "{BA4804CD-E130-3AEE-8C83-D882E2FE2590}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinoBloom.Runtime", "KinoBloom.Runtime.csproj", "{D4B44648-6909-8D5B-FB2B-93027E10EC17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CFXREditor", "CFXREditor.csproj", "{4CF3DA7A-DA95-9D60-6146-9974F7852D22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CFXR.WelcomeScreen", "CFXR.WelcomeScreen.csproj", "{D393FD6B-EC25-EF0D-AC25-65C75D1BC56B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToonyColorsPro.Demo.Editor", "ToonyColorsPro.Demo.Editor.csproj", "{3253E2C2-29CF-FC9E-823E-96CAA278A19B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{64169B04-C479-546A-1899-D2D6B31C6214}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +27,34 @@ Global
 		{343322D0-CE41-6424-2630-7AD7415F808D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{343322D0-CE41-6424-2630-7AD7415F808D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{343322D0-CE41-6424-2630-7AD7415F808D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{829EA591-A29A-AD2D-1713-050E28FF36DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{829EA591-A29A-AD2D-1713-050E28FF36DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{829EA591-A29A-AD2D-1713-050E28FF36DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{829EA591-A29A-AD2D-1713-050E28FF36DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA4804CD-E130-3AEE-8C83-D882E2FE2590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA4804CD-E130-3AEE-8C83-D882E2FE2590}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA4804CD-E130-3AEE-8C83-D882E2FE2590}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA4804CD-E130-3AEE-8C83-D882E2FE2590}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4B44648-6909-8D5B-FB2B-93027E10EC17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4B44648-6909-8D5B-FB2B-93027E10EC17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4B44648-6909-8D5B-FB2B-93027E10EC17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4B44648-6909-8D5B-FB2B-93027E10EC17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CF3DA7A-DA95-9D60-6146-9974F7852D22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CF3DA7A-DA95-9D60-6146-9974F7852D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CF3DA7A-DA95-9D60-6146-9974F7852D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CF3DA7A-DA95-9D60-6146-9974F7852D22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D393FD6B-EC25-EF0D-AC25-65C75D1BC56B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D393FD6B-EC25-EF0D-AC25-65C75D1BC56B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D393FD6B-EC25-EF0D-AC25-65C75D1BC56B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D393FD6B-EC25-EF0D-AC25-65C75D1BC56B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3253E2C2-29CF-FC9E-823E-96CAA278A19B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3253E2C2-29CF-FC9E-823E-96CAA278A19B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3253E2C2-29CF-FC9E-823E-96CAA278A19B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3253E2C2-29CF-FC9E-823E-96CAA278A19B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64169B04-C479-546A-1899-D2D6B31C6214}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64169B04-C479-546A-1899-D2D6B31C6214}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64169B04-C479-546A-1899-D2D6B31C6214}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64169B04-C479-546A-1899-D2D6B31C6214}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

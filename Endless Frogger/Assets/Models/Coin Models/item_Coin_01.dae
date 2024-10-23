@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <created>2017-01-07T19:50:14Z</created>
+    <modified>2017-01-07T19:50:14Z</modified>
+  </asset>
+  <library_images>
+    <image id="Image">
+      <init_from>Item_Coin_01.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="VisualMaterial" name="Item_Coin_01">
+      <instance_effect url="#Effect"/>
+      <extra>
+        <technique profile="FCOLLADA">
+          <user_properties>Item_Coin_01</user_properties>
+        </technique>
+      </extra>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="Effect" name="Item_Coin_01_png">
+      <profile_COMMON>
+        <newparam sid="Image-surface">
+          <surface type="2D">
+            <init_from>Image</init_from>
+            <format>A8R8G8B8</format>
+          </surface>
+        </newparam>
+        <newparam sid="Image-sampler">
+          <sampler2D>
+            <source>Image-surface</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
+            <minfilter>NONE</minfilter>
+            <magfilter>NONE</magfilter>
+            <mipfilter>NONE</mipfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="Image-sampler" texcoord=""/>
+            </diffuse>
+            <specular>
+              <color>1 1 1 1</color>
+            </specular>
+            <shininess>
+              <float>0</float>
+            </shininess>
+            <transparent opaque="A_ONE">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+            <index_of_refraction>
+              <float>1.55</float>
+            </index_of_refraction>
+          </phong>
+          <extra>
+            <technique profile="FCOLLADA">
+              <spec_level>
+                <float>0</float>
+              </spec_level>
+            </technique>
+          </extra>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="FCOLLADA">
+          <user_properties>Item_Coin_01.png</user_properties>
+        </technique>
+      </extra>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="Geometry" name="Item_Coin_01">
+      <mesh>
+        <source id="GeometrySource" name="Item_Coin_01Pos">
+          <float_array id="GeometrySource-array" count="96">0 0.000973 -0.021607 -0.113359 0.047928 -0.021607 -0.160314 0.161288 -0.021607 0.160314 0.161288 -0.021607 0 0.321601 -0.021607 -0.113359 0.274646 -0.021607 0.113359 0.274646 -0.021607 0.113359 0.047928 -0.021607 0.160314 0.161288 -0.021607 0.113359 0.274646 -0.021607 0.113359 0.274646 0.021598 0.160314 0.161288 0.021598 0 0.321601 0.021598 0 0.321601 -0.021607 0.113359 0.047928 -0.021607 0.113359 0.047928 0.021598 0 0.000973 -0.021607 0 0.000974 0.021598 -0.113359 0.274646 -0.021607 -0.113359 0.274646 0.021598 -0.160314 0.161288 0.021598 -0.160314 0.161288 -0.021607 -0.113359 0.047928 0.021598 -0.113359 0.047928 -0.021607 0.160314 0.161288 0.021598 0.113359 0.274646 0.021598 0 0.321601 0.021598 0 0.000974 0.021598 -0.160314 0.161288 0.021598 -0.113359 0.274646 0.021598 -0.113359 0.047928 0.021598 0.113359 0.047928 0.021598</float_array>
+          <technique_common>
+            <accessor source="#GeometrySource-array" count="32" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="GeometrySource1" name="Item_Coin_01Nrm">
+          <float_array id="GeometrySource1-array" count="96">0.093286 -0.675639 -0.731307 -0.568527 -0.75067 -0.336557 -0.567792 -0.078395 -0.819431 0.567792 0.078395 -0.819431 -0.093286 0.675639 -0.731306 -0.750671 0.568527 -0.336557 0.568527 0.750671 -0.336557 0.750671 -0.568527 -0.336557 0.567792 0.078395 -0.819431 0.568527 0.750671 -0.336557 0.750671 0.568527 0.336557 0.675639 -0.093286 0.731307 0.078395 0.567792 0.819431 -0.093286 0.675639 -0.731306 0.750671 -0.568527 -0.336557 0.568527 -0.750671 0.336557 0.093286 -0.675639 -0.731307 -0.078395 -0.567792 0.819431 -0.750671 0.568527 -0.336557 -0.568527 0.750671 0.336557 -0.675639 0.093286 0.731307 -0.567792 -0.078395 -0.819431 -0.750671 -0.568527 0.336557 -0.568527 -0.75067 -0.336557 0.675639 -0.093286 0.731307 0.750671 0.568527 0.336557 0.078395 0.567792 0.819431 -0.078395 -0.567792 0.819431 -0.675639 0.093286 0.731307 -0.568527 0.750671 0.336557 -0.750671 -0.568527 0.336557 0.568527 -0.750671 0.336557</float_array>
+          <technique_common>
+            <accessor source="#GeometrySource1-array" count="32" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="GeometrySource2" name="Item_Coin_01UV">
+          <float_array id="GeometrySource2-array" count="64">0.785294 -0.460457 0.930074 -0.400488 0.990044 -0.255707 0.580544 -0.255707 0.785294 -0.050956 0.930074 -0.110927 0.640513 -0.110927 0.640513 -0.400488 0.512528 -0.248487 0.512528 -0.115905 0.559105 -0.115905 0.559105 -0.248487 0.559105 -0.017862 0.512528 -0.017862 0.512528 -0.38107 0.559105 -0.38107 0.512528 -0.479112 0.559104 -0.479112 0.512528 -0.115905 0.559105 -0.115905 0.559104 -0.248487 0.512528 -0.248487 0.559104 -0.38107 0.512528 -0.38107 0.990044 -0.255707 0.930074 -0.110927 0.785294 -0.050956 0.785294 -0.460457 0.580544 -0.255707 0.640513 -0.110927 0.640513 -0.400488 0.930074 -0.400488</float_array>
+          <technique_common>
+            <accessor source="#GeometrySource2-array" count="32" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Geometry-vertices">
+          <input semantic="POSITION" source="#GeometrySource"/>
+          <input semantic="NORMAL" source="#GeometrySource1"/>
+          <input semantic="TEXCOORD" source="#GeometrySource2"/>
+        </vertices>
+        <triangles material="VisualMaterial0" count="28">
+          <input semantic="VERTEX" source="#Geometry-vertices" offset="0"/>
+          <p>0 1 2 0 2 3 2 4 3 2 5 4 4 6 3 7 0 3 8 9 10 10 11 8 12 10 9 9 13 12 14 8 11 11 15 14 16 14 15 15 17 16 13 18 19 19 12 13 20 19 18 18 21 20 22 20 21 17 22 23 23 16 17 21 23 22 24 25 26 24 26 27 26 28 27 26 29 28 28 30 27 31 24 27</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers>
+    <controller id="Controller">
+      <skin source="#Geometry">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="Controller-joints">
+          <Name_array id="Controller-joints-array" count="1">Item_Coin_01</Name_array>
+          <technique_common>
+            <accessor source="#Controller-joints-array" count="1" stride="1">
+              <param name="JOINT" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Controller-bind_poses">
+          <float_array id="Controller-bind_poses-array" count="16">1 0 0 0 0 1 0 0 0 0 1 0.000004 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Controller-bind_poses-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Controller-weights">
+          <float_array id="Controller-weights-array" count="1">1</float_array>
+          <technique_common>
+            <accessor source="#Controller-weights-array" count="1" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#Controller-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#Controller-bind_poses"/>
+        </joints>
+        <vertex_weights count="32">
+          <input semantic="JOINT" source="#Controller-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#Controller-weights" offset="1"/>
+          <vcount>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </vcount>
+          <v>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</v>
+        </vertex_weights>
+      </skin>
+      <extra>
+        <technique profile="FCOLLADA">
+          <user_properties>SkinController</user_properties>
+        </technique>
+      </extra>
+    </controller>
+  </library_controllers>
+  <library_visual_scenes>
+    <visual_scene id="VisualSceneNode" name="rdmscene">
+      <node id="VisualSceneNode1" name="Item_Coin_01" sid="Item_Coin_01" type="JOINT">
+        <matrix>1 0 0 0 0 1 0 0 0 0 1 -0.000004 0 0 0 1</matrix>
+      </node>
+      <node id="VisualSceneNode2" name="Item_Coin_01" type="NODE">
+        <matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_controller url="#Controller">
+          <skeleton>#VisualSceneNode1</skeleton>
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="VisualMaterial0" target="#VisualMaterial"/>
+            </technique_common>
+          </bind_material>
+        </instance_controller>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#VisualSceneNode"/>
+  </scene>
+</COLLADA>

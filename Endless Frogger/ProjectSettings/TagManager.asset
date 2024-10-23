@@ -6,6 +6,15 @@ TagManager:
   tags:
   - Tile
   - Despawner
+  - Bonus
+  - Vehicle
+  - Coin
+  - FxTemporaire
+  - Checkpoint
+  - Swing
+  - Obstacle
+  - Hazard
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -14,7 +23,7 @@ TagManager:
   - Water
   - UI
   - Lock-On
-  - 
+  - Vehicle
   - 
   - 
   - 

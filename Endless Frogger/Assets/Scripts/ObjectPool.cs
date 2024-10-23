@@ -9,6 +9,7 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] int poolSize;
 
     GameObject[] pool;
+    public string poolName;
 
     void Awake()
     {
@@ -30,6 +31,7 @@ public class ObjectPool : MonoBehaviour
         return null;
     }
 
+
     public void DisableObjectInPool(GameObject obj)
     {
         obj.SetActive(false);
@@ -48,6 +50,26 @@ public class ObjectPool : MonoBehaviour
             pool[i].SetActive(false);
         }
     }
+    public GameObject EnableObjectWithTag(string tag, float zOffset = 0f)
+    {
+        foreach (GameObject obj in pool)
+        {
+            // Check if the object is inactive and matches the tag
+            if (!obj.activeInHierarchy && obj.CompareTag(tag))
+            {
+                // Set the position based on the current object's position plus zOffset
+                obj.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + zOffset);
+
+                // Enable the object in the hierarchy
+                obj.SetActive(true);
+                return obj;
+            }
+        }
+
+        // Return null if no matching object was found
+        return null;
+    }
+
 
     //Called by Unity
     void OnValidate()
