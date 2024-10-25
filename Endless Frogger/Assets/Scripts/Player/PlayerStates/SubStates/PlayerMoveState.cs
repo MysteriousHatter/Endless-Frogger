@@ -6,7 +6,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class PlayerMoveState : PlayerGroundedState
 
 {
-    public PlayerMoveState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine)
+    public PlayerMoveState(Player player, PlayerStateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
     }
 
@@ -61,6 +61,28 @@ public class PlayerMoveState : PlayerGroundedState
             // Manually clamp the player's position if it exceeds the horizontal range
             player1.rb.position = new Vector3(clampedHorizPos, player1.rb.position.y, player1.rb.position.z);
         }
+
+        // Determine the target local rotation based on movement direction
+        Quaternion targetRotation;
+
+        if (player1.rb.velocity.x > 0)
+        {
+            // Rotate player to face right with a local tilt on the Y-axis
+            targetRotation = Quaternion.AngleAxis(90f, Vector3.up); // Tilt right around local Y-axis
+        }
+        else if (player1.rb.velocity.x < 0)
+        {
+            // Rotate player to face left with a local tilt on the Y-axis
+            targetRotation = Quaternion.AngleAxis(-90f, Vector3.up); // Tilt left around local Y-axis
+        }
+        else
+        {
+            // Reset rotation to face forward with no tilt
+            targetRotation = Quaternion.identity; // No rotation (facing forward)
+        }
+
+        // Smoothly rotate towards the target local rotation using RotateTowards
+        player1.transform.localRotation = Quaternion.RotateTowards(player1.transform.localRotation, targetRotation, 450f * Time.deltaTime);
     }
 
     public override void PhysicsUpdate()

@@ -15,7 +15,7 @@ public class PlayerSwingState : PlayerAbilityState
     bool finishedDrawing = false;
     Vector3 curentEndpointPosition;
 
-    public PlayerSwingState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine)
+    public PlayerSwingState(Player player, PlayerStateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
     }
 
@@ -23,6 +23,7 @@ public class PlayerSwingState : PlayerAbilityState
     {
         base.Enter();
         InitializeSwing();    // Initialize the swing logic when entering this state
+        
     }
 
     public override void LogicUpdate()
@@ -55,7 +56,7 @@ public class PlayerSwingState : PlayerAbilityState
         player1.springJoint.damper = player1.swingDamper;
 
         // Reduce the max distance to make the player closer to the swing point
-        float shortenedDistance = player1.maxSwingDistance * 0.6f;  // 60% of the original max distance
+        float shortenedDistance = player1.maxSwingDistance * 0.09f;  // 60% of the original max distance
         player1.springJoint.maxDistance = shortenedDistance;
 
         // Optionally set the minimum distance to prevent the player from moving too far away
@@ -91,7 +92,7 @@ public class PlayerSwingState : PlayerAbilityState
             player1.rb.AddForce(new Vector3(0f, 0f, pendulumForce * Time.deltaTime), ForceMode.Acceleration);
 
             // Optionally: Limit the max speed to simulate realistic pendulum swing behavior
-            float maxSwingSpeed = 10f; // Adjust this value as needed
+            float maxSwingSpeed = 7f; // Adjust this value as needed
             if (Mathf.Abs(player1.rb.velocity.z) > maxSwingSpeed)
             {
                 player1.rb.velocity = new Vector3(player1.rb.velocity.x, player1.rb.velocity.y, Mathf.Sign(player1.rb.velocity.z) * maxSwingSpeed);
@@ -110,6 +111,7 @@ public class PlayerSwingState : PlayerAbilityState
             player1.OnDestroyJoint(); // Remove the SpringJoint
             player1.springJoint = null;   // Reset the referenc
             player1.line.enabled = false;  // Hide the grapple line (optional)e
+          
         }
 
         
@@ -118,6 +120,7 @@ public class PlayerSwingState : PlayerAbilityState
         Vector3 releaseDirection = player1.rb.velocity.normalized;
         //player1.rb.AddForce(releaseDirection * player1.releaseForceMagnitude, ForceMode.Impulse);
         player1.UseJumpInput();
+        player1.UseGrappleInput();
         // Change state to in-air state to simulate the player continuing to move after the swing
         stateMachine.ChangeState(player1.InAirState);
         Debug.Log("CHange state to air state");

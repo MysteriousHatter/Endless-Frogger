@@ -6,7 +6,7 @@ using UnityEngine.Windows;
 public class PlayerStompState : PlayerAbilityState
 {
 
-    public PlayerStompState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine)
+    public PlayerStompState(Player player, PlayerStateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
     }
 

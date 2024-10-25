@@ -34,7 +34,7 @@ public class LockOnSystem : MonoBehaviour
             Transform enemyTransform = enemy.transform;
 
             // Check if the player is facing the enemy
-            if (IsPlayerFacingEnemy(player, enemyTransform))
+            if (IsPlayerFacingEnemy(player, enemyTransform) && !player.GetComponent<Player>().IsGrounded())
             {
                 // Set the locked enemy and display the homing reticle
                 lockedEnemy = enemyTransform;
@@ -49,6 +49,7 @@ public class LockOnSystem : MonoBehaviour
         DisableReticle();
         lockedEnemy = null;
         player.GetComponent<Player>().currentEnemy = null;
+
     }
 
     // Method to check if the player is facing the enemy

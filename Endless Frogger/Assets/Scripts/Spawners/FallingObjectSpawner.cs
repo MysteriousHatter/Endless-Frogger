@@ -10,6 +10,7 @@ public class FallingObjectSpawner : MonoBehaviour
     [SerializeField] float spawnHeight = 20f; // Height above the ground to spawn spikes
     [SerializeField] float minX = -10f; // Minimum X position for spawning spikes
     [SerializeField] float maxX = 10f; // Maximum X position for spawning spikes
+    [SerializeField] private BoxCollider desapwnArea;
 
     float nextSpawnTime;
 
@@ -46,16 +47,18 @@ public class FallingObjectSpawner : MonoBehaviour
         // Fixed Y position (spawn height) for the spike
         float spawnYPosition = spawnHeight;
 
-        // Optional: If your pool only takes a float (e.g., z-offset)
-        float randomZOffset = Random.Range(-2f, 2f); // Example z-offset if necessary
+        float minZ = desapwnArea.bounds.min.z;
+        float maxZ = desapwnArea.bounds.max.z;
+
+        float randomZPosition = Random.Range(minZ, maxZ);
 
         // Enable a spike from the pool with a Z offset (if the pool method takes only floats)
-        GameObject spike = selectedPool.EnableObjectInPool(randomZOffset);
+        GameObject spike = selectedPool.EnableObjectInPool();
 
         if (spike != null)
         {
             // Now manually set the position of the spike using Vector3
-            spike.transform.position = new Vector3(randomXPosition, spawnYPosition, spike.transform.position.z);
+            spike.transform.position = new Vector3(randomXPosition, spawnYPosition, randomZPosition);
 
             // Optionally, add more adjustments or set other properties here if needed
         }

@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabLogger.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabPlugin.cs" />
+    <Compile Include="Assets\LowPolyWater_Pack\Scripts\LowPolyWater.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerFiniteState\PlayerStateMachine.cs" />
     <Compile Include="Assets\Scripts\Spawners\VehicleSpawner.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStates\SuperStates\PlayerAbilityState.cs" />
@@ -74,10 +75,12 @@
     <Compile Include="Assets\Scripts\Player\PlayerStates\SubStates\PlayerStompState.cs" />
     <Compile Include="Assets\Scripts\Spawners\ObstacleSpawner.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporter.cs" />
+    <Compile Include="Assets\Scripts\Spawners\FallingObjectSpawner.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStates\SubStates\PlayerIdleState.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStates\SubStates\PlayerJumpState.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporterWindow.cs" />
+    <Compile Include="Assets\Scripts\Spikes.cs" />
     <Compile Include="Assets\Scripts\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\Spawners\CheckPointSpawner.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabExporter.cs" />
@@ -92,15 +95,24 @@
     <Compile Include="Assets\Scripts\Player\PlayerStates\SubStates\PlayerLandState.cs" />
     <Compile Include="Assets\Scripts\TileDespawner.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserWindow.cs" />
-    <Compile Include="Assets\Scripts\Spawners\FallingObjectSpawner.cs" />
-    <Compile Include="Assets\LowPolyWater_Pack\Scripts\LowPolyWater.cs" />
-    <Compile Include="Assets\Scripts\Spikes.cs" />
+    <Compile Include="Assets\SimpleCumulus\Demo\Scripts\Skybox\SkyboxRotator.cs" />
+    <Compile Include="Assets\SimpleCumulus\Demo\Scripts\Skybox\SkyboxChanger.cs" />
+    <Compile Include="Assets\SimpleCumulus\Demo\Scripts\Player\SmoothMouseLook.cs" />
+    <Compile Include="Assets\SimpleCumulus\Demo\Scripts\Player\FPSWalkerEnhanced.cs" />
+    <Compile Include="Assets\PSFX\Demo\Scripts\PSFXDemoWobble.cs" />
+    <Compile Include="Assets\PSFX\Demo\Scripts\PSFXDemoRotate.cs" />
+    <Compile Include="Assets\PSFX\Demo\Scripts\PSFXDemoBob.cs" />
+    <Compile Include="Assets\PSFX\Scripts\PSFXCamera.cs" />
+    <Compile Include="Assets\PSFX\Demo\Scripts\PSFXDemoColorShift.cs" />
+    <Compile Include="Assets\PSFX\Demo\Scripts\PSFXDemoTextInfo.cs" />
+    <Compile Include="Assets\PSFX\Demo\Scripts\PSFXDemoController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Asset Packs\PolygonPrototype\Shaders\Prototype_Glass_Global.shader" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFFlipTexture.shader" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFColorSpace.cginc" />
     <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR_SETTINGS.cginc" />
+    <None Include="Assets\PSFX\Readme.txt" />
     <None Include="Assets\Models\Car Models\Super Retro Compact Pack\Readme.txt" />
     <None Include="Assets\Asset Packs\PolygonPrototype\Shaders\Prototype_Object.shader" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFPackOccMetalRough.shader" />
@@ -110,6 +122,9 @@
     <None Include="Assets\Asset Packs\PolygonPrototype\Shaders\Prototype_Global.shader" />
     <None Include="Assets\README.txt" />
     <None Include="Assets\LowPolyWater_Pack\LowPoly Island\Credits.txt" />
+    <None Include="Assets\PSFX\Resources\Shaders\PSFXCameraShader.shader" />
+    <None Include="Assets\PSFX\Shaders\PSFX.shader" />
+    <None Include="Assets\PSFX\FAQ.txt" />
     <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Prefabs\Texts\_Make your own text effect.txt" />
     <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR_PASSES.cginc" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\SketchfabPlugin.dll" />

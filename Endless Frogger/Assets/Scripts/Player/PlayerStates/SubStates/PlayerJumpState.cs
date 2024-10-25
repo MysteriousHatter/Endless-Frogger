@@ -7,7 +7,7 @@ public class PlayerJumpState : PlayerAbilityState
 {
     private int amountOfJumpsLeft;
 
-    public PlayerJumpState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine)
+    public PlayerJumpState(Player player, PlayerStateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
         amountOfJumpsLeft = 1;
     }

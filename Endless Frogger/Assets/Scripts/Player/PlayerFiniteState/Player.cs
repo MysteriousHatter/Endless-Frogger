@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public PlayerInAirState InAirState { get; private set; }
     public PlayerLandState LandState { get; private set; }
     public GameObject enemyPrefab { get; set; }
+    public Animator Anim { get; private set; }
 
     public bool playerDead { get; set; }
 
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
     #endregion
 
     const string vehicleTag = "Vehicle";
+    const string spikeTag = "Hazard";
     const string tileTag = "Tile";
     const string bonusVehcicleTag = "Bonus";
 
@@ -90,14 +92,14 @@ public class Player : MonoBehaviour
     {
         StateMachine = new PlayerStateMachine();
         playerDead = false;
-        IdleState = new PlayerIdleState(this, StateMachine);
-        MoveState = new PlayerMoveState(this, StateMachine);
-        JumpState = new PlayerJumpState(this, StateMachine);
-        InAirState = new PlayerInAirState(this, StateMachine);
-        LandState = new PlayerLandState(this, StateMachine);
-        StompState = new PlayerStompState(this, StateMachine);
-        SwingState = new PlayerSwingState(this, StateMachine);
-
+        IdleState = new PlayerIdleState(this, StateMachine, "idle");
+        MoveState = new PlayerMoveState(this, StateMachine, "move");
+        JumpState = new PlayerJumpState(this, StateMachine, "jump");
+        InAirState = new PlayerInAirState(this, StateMachine, "air");
+        LandState = new PlayerLandState(this, StateMachine, "land");
+        StompState = new PlayerStompState(this, StateMachine, "stomp");
+        SwingState = new PlayerSwingState(this, StateMachine, "swing");
+        Anim = GetComponentInChildren<Animator>();
         levelGenerator = FindObjectOfType<LevelGenerator>();
     }
 
@@ -118,7 +120,7 @@ public class Player : MonoBehaviour
 
     private void CheckPlayerSwingInput()
     {
-        if(Input.GetKeyDown(KeyCode.P))
+        if(Input.GetKeyDown(KeyCode.P) && !IsGrounded())
         {
             swingInput = true;
         }
@@ -126,7 +128,7 @@ public class Player : MonoBehaviour
 
     private void CheckPlayerStompInput()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Q) && !IsGrounded())
         {
             StompInput = true;
         }
@@ -166,15 +168,14 @@ public class Player : MonoBehaviour
             GameManager.instance.CoinCollectionIncrease(1);
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.CompareTag(vehicleTag))
+        if (collision.gameObject.CompareTag(vehicleTag) || collision.gameObject.CompareTag(spikeTag))
         {
+            Debug.Log("Die");
+            //TODO Put up game over screen and pause game
+            //Give the player the option to start off with their reamaing points and reload the tile set or just restart game 
+            //Reset boolean in level generator
             //levelGenerator.RespawnAtCheckpoint();
         }
-        //if(collision.gameObject.CompareTag("Checkpoint"))
-        //{
-        //    Debug.Log("Get Checkpoint " + collision.gameObject.name);
-        //    levelGenerator.checkpointTile = collision.gameObject;
-        //}
     }
 
 

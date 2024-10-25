@@ -3,7 +3,12 @@ guid: 3c79e1b417e534b4ab4e8c376c6d6926
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chr_spike_mat__chPhantom__
+    second: {fileID: 2100000, guid: 80a5489eb3c013548966e3106419a38a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

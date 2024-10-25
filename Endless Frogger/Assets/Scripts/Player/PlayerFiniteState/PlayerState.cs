@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,10 +12,14 @@ public class PlayerState
     protected bool isExitingState;
     protected float startTime;
 
+    private string animBoolName;
+    protected bool isAnimationFinished;
 
-    public PlayerState(Player player, PlayerStateMachine stateMachine)
+
+    public PlayerState(Player player, PlayerStateMachine stateMachine, string animBoolName)
     {
         this.stateMachine = stateMachine;
+        this.animBoolName = animBoolName;
         this.player1 = player;
     }
 
@@ -22,11 +27,13 @@ public class PlayerState
     {
         DoChecks();
         startTime = Time.time;
+        player1.Anim.SetBool(animBoolName, true);
         isExitingState = false;
     }
 
     public virtual void Exit()
     {
+        player1.Anim.SetBool(animBoolName, false);
         isExitingState = true;
     }
 

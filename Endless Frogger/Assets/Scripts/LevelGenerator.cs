@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private float additonalSpacing = 0.9f;
     public GameObject checkpointTile; // Track the tile with the checkpoint
     private int tilesSpawned = 0; // Tracks the total number of tiles generated
+    private bool gameHasStarted { get; set; }
     Mover mover;
     Player player;
 
@@ -24,11 +26,11 @@ public class LevelGenerator : MonoBehaviour
     {
         mover = FindObjectOfType<Mover>();
         player = FindObjectOfType(typeof(Player)) as Player;
+        gameHasStarted = true;
     }
 
     void Start()
     {
-        GenerateFirstTile();
         //Sets up the initial tiles in the world.
         for (int i = 0; i < worldSize; i++)
         {
@@ -38,6 +40,7 @@ public class LevelGenerator : MonoBehaviour
 
     public void DisableTile(GameObject obj)
     {
+        
         //Return the tile to the pool
         obj.SetActive(false);
 
@@ -51,16 +54,50 @@ public class LevelGenerator : MonoBehaviour
     void GenerateTile(float zOffset)
     {
         //Select a tile from a random pool
-        int selectedPool = Random.Range(0, objectPools.Length);
+        int selectedPool;
+        if(gameHasStarted) { selectedPool = 0; } 
+        else { selectedPool = Random.Range(0, objectPools.Length); }
         Debug.Log("Generate a tile");
         GameObject poolObject = objectPools[selectedPool].EnableObjectInPool(tileDepth);
+        if (poolObject.CompareTag("Obstacle"))
+        {
+            // Define the additional space to add between tiles
+            float additionalSpacing = 1f; // Adjust this value as needed
+            Debug.Log("Obstcale");
+            // Modify the zOffset for the current tile by adding the extra spacing
+            zOffset += additionalSpacing;
+
+            // Position the current tile based on the new zOffset
+            poolObject.transform.position = new Vector3(poolObject.transform.position.x, poolObject.transform.position.y, zOffset);
+
+            // Adjust zOffset for future tiles if necessary
+            zOffset += 4f; // Assuming tileLength is the standard distance between tiles
+        }
         //If there was not available tile in the pool, naively select the first one you can find from another pool
         if (poolObject == null)
         {
-            foreach (ObjectPool pool in objectPools)
+            if (gameHasStarted) { poolObject = objectPools[selectedPool].EnableObjectInPool(tileDepth); }
+            else
             {
-                poolObject = pool.EnableObjectInPool();
-                if (poolObject != null) { break; }
+                foreach (ObjectPool pool in objectPools)
+                {
+                    poolObject = pool.EnableObjectInPool();
+                    if (poolObject.CompareTag("Obstacle"))
+                    {
+                        // Define the additional space to add between tiles
+                        float additionalSpacing = 1f; // Adjust this value as needed
+
+                        // Modify the zOffset for the current tile by adding the extra spacing
+                        zOffset += additionalSpacing;
+
+                        // Position the current tile based on the new zOffset
+                        poolObject.transform.position = new Vector3(poolObject.transform.position.x, poolObject.transform.position.y, zOffset);
+
+                        // Adjust zOffset for future tiles if necessary
+                        zOffset += 4f; // Assuming tileLength is the standard distance between tiles
+                    }
+                    if (poolObject != null) { break; }
+                }
             }
         }
 
@@ -69,34 +106,13 @@ public class LevelGenerator : MonoBehaviour
             //TODO Change the center alignment of the tile (or don't - it's your call!)
             poolObject.transform.position = new Vector3(0f, transform.position.y, transform.position.z + zOffset);
 
-            if(poolObject.CompareTag("Swing"))
-            {
-                //TODO if pool object is swing then make sure instanitate an obstcale tile next to the swing t
-            }
-
             //Make the tile moveable
             mover.AddMovableObject(poolObject);
         }
+        gameHasStarted = false;
+
     }
 
-    void GenerateFirstTile()
-    {
-        // You can select a specific pool or a specific tile prefab for the first tile
-        GameObject firstTile = objectPools[0].EnableObjectInPool(tileDepth); // Assuming pool[0] contains the starting tile
-
-        if (firstTile != null)
-        {
-            // Set position of the first tile at the start of the game
-            firstTile.transform.position = new Vector3(0f, transform.position.y, 0f);
-
-            // Make the first tile moveable if needed
-            mover.AddMovableObject(firstTile);
-        }
-        else
-        {
-            Debug.LogWarning("No available tile for the first tile in the pool.");
-        }
-    }
 
 
 

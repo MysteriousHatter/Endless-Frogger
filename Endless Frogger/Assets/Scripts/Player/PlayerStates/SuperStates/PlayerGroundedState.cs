@@ -13,7 +13,7 @@ public class PlayerGroundedState : PlayerState
     private bool isGrounded;
     private bool stompInput;
 
-    public PlayerGroundedState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine)
+    public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
     }
 

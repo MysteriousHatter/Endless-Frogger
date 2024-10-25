@@ -3,7 +3,27 @@ guid: e25af975fd824a645b9109e76220a8fb
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mt_LampPole_mat
+    second: {fileID: 2100000, guid: f6ad89ba84de86242bf44c32548ce952, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mt_Light2_mat
+    second: {fileID: 2100000, guid: 50ffb3c39a661f84894cd9e4c137121a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mt_Light_mat
+    second: {fileID: 2100000, guid: c19688c70947dcd409bf823d9a8999ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mt_Walk_Shadow_Tex_mat
+    second: {fileID: 2100000, guid: e6155692bd952be4e8cd5fd46248f496, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
