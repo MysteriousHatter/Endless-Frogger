@@ -196,10 +196,10 @@ MonoBehaviour:
   - {fileID: 286099682}
   - {fileID: 1539091446}
   - {fileID: 1043593539}
-  worldSize: 24
-  tileDepth: 9.898
+  worldSize: 50
+  tileDepth: 10
   tileDespawner: {fileID: 1138843801}
-  additionalSpacing: 0.9
+  additonalSpacing: 0.9
 --- !u!1 &173315016
 GameObject:
   m_ObjectHideFlags: 0

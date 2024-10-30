@@ -178,8 +178,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag(vehicleTag) || collision.gameObject.CompareTag(spikeTag))
         {
             Debug.Log("Die");
-            deathSoundEffect.Play();
-            GameManager.instance.LoadGameOverScene();
+            //deathSoundEffect.Play();
+            //GameManager.instance.LoadGameOverScene();
         }
     }
 
