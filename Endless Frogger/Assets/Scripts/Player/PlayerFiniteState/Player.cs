@@ -40,6 +40,11 @@ public class Player : MonoBehaviour
     const string tileTag = "Tile";
     const string bonusVehcicleTag = "Bonus";
 
+    [SerializeField] private AudioSource deathSoundEffect;
+    [SerializeField] private AudioSource coinSoundEffect;
+    [SerializeField] private AudioSource stompSoundEffect;
+    [SerializeField] private AudioSource webSoundEffect;
+
     [SerializeField] private float raycastDistance = 2f;
     [SerializeField] private LayerMask groundLayer;
 
@@ -123,6 +128,7 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.P) && !IsGrounded())
         {
             swingInput = true;
+            webSoundEffect.Play();
         }
     }
 
@@ -157,7 +163,7 @@ public class Player : MonoBehaviour
     {
         if(isStomping && collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            Vector3 impactPoint = collision.contacts[0].point;
+            Vector3 impactPoint = initalPoint.localPosition;
             TriggerImpactEffects(impactPoint);
             DestroyObstructions();
             setIsStomping(false);
@@ -166,15 +172,14 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag.Equals("Coin"))
         {
             GameManager.instance.CoinCollectionIncrease(1);
+            coinSoundEffect.Play();
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag(vehicleTag) || collision.gameObject.CompareTag(spikeTag))
         {
             Debug.Log("Die");
-            //TODO Put up game over screen and pause game
-            //Give the player the option to start off with their reamaing points and reload the tile set or just restart game 
-            //Reset boolean in level generator
-            //levelGenerator.RespawnAtCheckpoint();
+            deathSoundEffect.Play();
+            GameManager.instance.LoadGameOverScene();
         }
     }
 
@@ -182,12 +187,27 @@ public class Player : MonoBehaviour
     public bool IsGrounded()
     {
         RaycastHit hit;
-        if(Physics.Raycast(initalPoint.transform.position, Vector3.down, out hit, raycastDistance, groundLayer)) 
+        if (Physics.Raycast(initalPoint.transform.position, Vector3.down, out hit, raycastDistance, groundLayer))
         {
+            Debug.Log("Ground detected: " + hit.collider.name);
             return true;
-            
         }
-        return false;
+        else
+        {
+            // Check if any collider was hit but didn't match the ground layer
+            if (Physics.Raycast(initalPoint.position, Vector3.down, out RaycastHit hitAny, raycastDistance))
+            {
+                // Collider found, but it's not in the ground layer
+                Debug.LogWarning($"Collider detected but not on groundLayer: {hitAny.collider.name} (Layer: {LayerMask.LayerToName(hitAny.collider.gameObject.layer)})");
+            }
+            else
+            {
+                // No collider detected within range
+                Debug.LogWarning("No collider detected within raycast distance. Possible causes: raycastDistance is too short, or ground layer is missing.");
+            }
+
+            return false;
+        }
     }
 
     public void Jump()
@@ -206,6 +226,7 @@ public class Player : MonoBehaviour
     void DestroyObstructions()
     {
         // Implement logic to destroy nearby obstructions
+        stompSoundEffect.Play();
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, stompRadius, targetLayer);  // Detect nearby objects
         foreach (var hitCollider in hitColliders)
         {
@@ -222,7 +243,7 @@ public class Player : MonoBehaviour
     void TriggerImpactEffects(Vector2 impactPoint)
     {
         // Instantiate particle effect at impactPoint
-        Instantiate(particleEffectPrefab, impactPoint, Quaternion.identity);
+        Instantiate(particleEffectPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
 
         //// Play stomp sound
         //AudioSource.PlayClipAtPoint(stompSound, impactPoint);

@@ -9,10 +9,11 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
     private Player player;
     [SerializeField] private Text scoreText;
-    int score = 0;
+    public int score { get; private set; }
 
     void Awake()
     {
+        score = 0;
         // Singleton pattern - ensure only one GameManager exists
         if (instance == null)
         {

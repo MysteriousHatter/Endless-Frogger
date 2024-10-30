@@ -34,7 +34,7 @@ public class PlayerMoveState : PlayerGroundedState
 
         if (!isExitingState)
         {
-            if (player1.rb.velocity.magnitude <= 0f && zInput == 0)
+            if (player1.rb.velocity.magnitude <= 0f || zInput == 0)
             {
                 stateMachine.ChangeState(player1.IdleState);
             }

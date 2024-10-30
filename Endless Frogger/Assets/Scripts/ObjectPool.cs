@@ -34,6 +34,7 @@ public class ObjectPool : MonoBehaviour
 
     public void DisableObjectInPool(GameObject obj)
     {
+        Debug.Log("The obj name " +  obj.name);
         obj.SetActive(false);
     }
 

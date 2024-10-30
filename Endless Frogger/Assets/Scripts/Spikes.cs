@@ -16,9 +16,17 @@ public class Spikes : MonoBehaviour
     {
         transform.rotation = transform.parent.rotation; // Ensure vehicle aligns with the parent's rotation
         despanwerPool = FindObjectOfType<ObjectPool>();
-
         rb = GetComponent<Rigidbody>();
-
+        // Now GameManager.instance should be ready
+        if (GameManager.instance != null)
+        {
+            speed = GameManager.instance.getObstacleSpeed();
+        }
+        else
+        {
+            Debug.LogWarning("GameManager instance not found. Default speed will be used.");
+            speed = 5f; // Default speed if GameManager isn't found (optional)
+        }
         if (rb == null)
         {
             // Add a Rigidbody if it doesn't exist
@@ -51,5 +59,15 @@ public class Spikes : MonoBehaviour
             despanwerPool.DisableObjectInPool(this.gameObject);
 
         }
+    }
+
+    public float getSpeed()
+    {
+        return speed;
+    }
+
+    public void SetSpeed(float speed) 
+    {
+        this.speed = speed;
     }
 }

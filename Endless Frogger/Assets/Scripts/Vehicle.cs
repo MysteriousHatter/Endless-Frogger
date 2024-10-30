@@ -21,7 +21,16 @@ public class Vehicle : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         player = FindObjectOfType(typeof(Player)) as Player;
-
+        // Now GameManager.instance should be ready
+        if (GameManager.instance != null)
+        {
+            speed = GameManager.instance.getObstacleSpeed();
+        }
+        else
+        {
+            Debug.LogWarning("GameManager instance not found. Default speed will be used.");
+            speed = 5f; // Default speed if GameManager isn't found (optional)
+        }
         if (rb == null)
         {
             // Add a Rigidbody if it doesn't exist
@@ -32,19 +41,10 @@ public class Vehicle : MonoBehaviour
         // Make the Rigidbody kinematic since you are manually controlling the movement
         rb.isKinematic = true;
     }
-
     void Update()
     {
         // Move the vehicle forward along the tile based on its own speed
         MoveVehicle();
-
-        // Check if the player is on the platform and presses the jump button
-        if (player != null && player.JumpInput)
-        {
-            // Player has jumped, so unparent them from the platform (log)
-            player.transform.SetParent(null);
-            Debug.Log("Player has jumped off the platform.");
-        }
     }
 
     void MoveVehicle()
@@ -64,26 +64,14 @@ public class Vehicle : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collisionInfo)
+    public float getSpeed()
     {
-        if (collisionInfo.gameObject.CompareTag("Player"))
-        {
-            // Parent the player object to the vehicle (platform)
-            collisionInfo.gameObject.transform.SetParent(this.transform);
-
-            Debug.Log("Player is now parented to the platform");
-        }
+        return speed;
     }
 
-    void OnCollisionExit(Collision collisionInfo)
+    public void SetSpeed(float speed)
     {
-        if (collisionInfo.gameObject.CompareTag("Player"))
-        {
-            // Unparent the player object from the platform when they leave
-            collisionInfo.gameObject.transform.SetParent(null);
-
-            Debug.Log("Player has left the platform and is unparented");
-        }
+        this.speed = speed;
     }
 
 }

@@ -12,7 +12,7 @@ public class LockOnSystem : MonoBehaviour
 
     private GameObject currentReticle;     // Currently active homing reticle
     private Transform lockedEnemy;         // Currently locked-on enemy
- 
+
 
     void Update()
     {
@@ -22,34 +22,61 @@ public class LockOnSystem : MonoBehaviour
         // Reset lock-on if no enemies are detected
         if (enemiesInRange.Length == 0)
         {
-            Debug.Log("Are collider is empty");
+            Debug.Log("Collider is empty");
             DisableReticle();
             lockedEnemy = null;
+            player.GetComponent<Player>().currentEnemy = null;
+            player.GetComponent<Player>().setIsLockedOn(false);
             return;
         }
 
-        // Find the first valid enemy the player is facing
+        // Prioritize locking onto the player first, if they are within the lock-on range
+        bool playerLocked = false;
         foreach (Collider enemy in enemiesInRange)
         {
             Transform enemyTransform = enemy.transform;
 
-            // Check if the player is facing the enemy
-            if (IsPlayerFacingEnemy(player, enemyTransform) && !player.GetComponent<Player>().IsGrounded())
+            // Check if the detected enemy is the player themselves
+            if (enemyTransform == player)
             {
-                // Set the locked enemy and display the homing reticle
-                lockedEnemy = enemyTransform;
-                player.GetComponent<Player>().currentEnemy = lockedEnemy.transform;
-                ShowReticle(lockedEnemy);
-                player.GetComponent<Player>().setIsLockedOn(true);
-                return;
+                // Ensure the player is facing themselves (or could skip this check if irrelevant)
+                if (!player.GetComponent<Player>().IsGrounded())
+                {
+                    lockedEnemy = player;
+                    player.GetComponent<Player>().currentEnemy = lockedEnemy;
+                    ShowReticle(lockedEnemy);
+                    player.GetComponent<Player>().setIsLockedOn(true);
+                    playerLocked = true;
+                    break; // Exit the loop as the player is prioritized
+                }
             }
         }
 
-        // If no valid enemies, disable the reticle
-        DisableReticle();
-        lockedEnemy = null;
-        player.GetComponent<Player>().currentEnemy = null;
+        // If the player wasn't locked, proceed to check other enemies in range
+        if (!playerLocked)
+        {
+            foreach (Collider enemy in enemiesInRange)
+            {
+                Transform enemyTransform = enemy.transform;
 
+                // Check if the player is facing this enemy
+                if (!player.GetComponent<Player>().IsGrounded())
+                {
+                    // Set the locked enemy and display the homing reticle
+                    lockedEnemy = enemyTransform;
+                    player.GetComponent<Player>().currentEnemy = lockedEnemy;
+                    ShowReticle(lockedEnemy);
+                    player.GetComponent<Player>().setIsLockedOn(true);
+                    return;
+                }
+            }
+
+            // If no valid enemies, disable the reticle
+            DisableReticle();
+            lockedEnemy = null;
+            player.GetComponent<Player>().currentEnemy = null;
+            player.GetComponent<Player>().setIsLockedOn(false);
+        }
     }
 
     // Method to check if the player is facing the enemy
@@ -63,6 +90,7 @@ public class LockOnSystem : MonoBehaviour
         // Return true if the player is within the facing angle threshold
         return angleToEnemy < facingAngleThreshold;
     }
+
 
     // Method to display the homing reticle above the enemy
     void ShowReticle(Transform enemy)

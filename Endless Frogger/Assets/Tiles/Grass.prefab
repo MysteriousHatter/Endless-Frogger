@@ -68,14 +68,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxObstacleCount: 10
   obstaclePrefabs:
-  - {fileID: 2608799411145161700, guid: 7ec911aee7fa0414380cd218f91d0a69, type: 3}
-  - {fileID: 2010673790417150174, guid: 7369dd5883f38604297ec5f8f483af5c, type: 3}
-  - {fileID: 1242593129306095568, guid: 7f99e8f51ebcf2e4eb921134a0134da9, type: 3}
-  - {fileID: 3881734075089041592, guid: 2b38c83b321d8f3429fead3dda8ef580, type: 3}
-  - {fileID: 3228197372197830705, guid: 420499018bf492b419c2e416e4d9233b, type: 3}
-  - {fileID: 6518499408463460525, guid: ff72e35fb633541448865c3e5b4b4fa9, type: 3}
-  - {fileID: 1469935600455938592, guid: d906bcaa8f47397488416f9742b059f9, type: 3}
-  - {fileID: 4217970198891510835, guid: 42153e3b9ff364c4eb6b8593187f7a8a, type: 3}
+  - {fileID: 1086224761313166, guid: dc60d238b79baef4b8f3a024a55a08f7, type: 3}
+  - {fileID: 1693210484172212, guid: aec9b02eac062314dafd229d901fd52c, type: 3}
+  - {fileID: 1341243902856316, guid: 74cd91a7648f08249bcdb5736bcf8a86, type: 3}
+  - {fileID: 1925185884874842, guid: 44b363e80a9e4fd46ba03e4b71173a9e, type: 3}
+  - {fileID: 1449854524503252, guid: 408f59ce148892a4480e8987e8a029b1, type: 3}
+  - {fileID: 1997415029587876, guid: 23c6666f4e51c18408a67510426d9554, type: 3}
+  - {fileID: 1789117675568830, guid: c77201b26fc729742973d2d4e601743f, type: 3}
+  - {fileID: 1648607492136232, guid: b939602de8e46114ebc8a2c942c9e082, type: 3}
+  - {fileID: 1267646854134236, guid: d032615f78168a84980c15fb8cce79b1, type: 3}
   tileWidth: 40
   tileDepth: 8
 --- !u!65 &8290826667129567354
